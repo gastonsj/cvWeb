@@ -10,6 +10,9 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { InterestsComponent } from './components/interests/interests.component';
 import { AwardsComponent } from './components/awards/awards.component';
 import { NavigatorComponent } from './components/navigator/navigator.component';
+import { LoginComponent } from './components/login/login.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import { NavigatorComponent } from './components/navigator/navigator.component';
     SkillsComponent,
     InterestsComponent,
     AwardsComponent,
-    NavigatorComponent
+    NavigatorComponent,
+    LoginComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

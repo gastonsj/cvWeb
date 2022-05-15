@@ -1,0 +1,41 @@
+{
+"firstName":"Gaston",
+"lastName": "Leiva",
+"degree": "Ingeniero Electronico",
+"summary": "aca va el about",
+"address": "Hipolito Yrigoyen 1934 sur. Rivadavia. San Juan",
+"email": "leivagsj@gmail.com",
+"image": "https://media-exp1.licdn.com/dms/image/C5103AQEF-orTY3cERw/profile-displayphoto-shrink_200_200/0/1517438056915?e=1657756800&v=beta&t=F-b03VfMjjtJaH9O8KSQn0bwwk0Pb0Sfm4W_YzYoyhc",
+"experience": [
+    {
+        "position": "Programador Industrial",
+        "company": "Gaudium SRL",
+        "start": "Enero de 2014",
+        "end": "Marzo de 2017",
+        "summery": "blablabla"
+    },
+    {
+        "position": "Ingeniero de Control",
+        "company": "Arcor SAIC",
+        "start": "Marzo de 2017",
+        "end": "Actualidad",
+        "summery": "blablabla"
+    }
+],
+"education": [
+    {
+        "school": "Colegio Central Universitario Mariano Moreno",
+        "title": "Bachillerato",
+        "img": "",
+        "start": "Marzo de 2004",
+        "end": "Diciembre de 2009"
+    },
+    {
+        "school": "Facultad de Ingenieria de Universidad Nacional de San Juan",
+        "title": "Ingeniero Electronico",
+        "img": "",
+        "start": "Marzo de 2010",
+        "end": "Febrero de 2017"
+    }
+]
+}
