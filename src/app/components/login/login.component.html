@@ -1,5 +1,49 @@
-<h1 class="m-5">Iniciar Sesión</h1>
-<form [formGroup]="form" class="m-5">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-info px-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+          Iniciar Sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">INICIAR SESION</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit">
+          <div class="mb-3">
+            <label for="id_email" class="form-label">Email</label>
+            <input formControlName="email" [class.is-invalid]="emailField.touched && emailField.invalid" type="email"
+              class="form-control" id="id_email">
+            <div *ngIf="emailField.touched && emailField.hasError('required')" class="d-block invalid-feedback">Ingrese email               provide a Email.</div>
+            <div *ngIf="emailField.touched && emailField.hasError('email')" class="d-block invalid-feedback">
+              El formato de email no es correcto</div>
+          </div>
+          <div class="mb-3">
+            <label for="id_Password" class="form-label">Contraseña</label>
+            <input formControlName="password" [class.is-invalid]="passwordField.touched && passwordField.invalid"
+              type="password" class="form-control" id="id_Password">
+            <div *ngIf="passwordField.touched && passwordField.hasError('required')" class="d-block invalid-feedback">
+              Ingrese la contraseña</div>
+          </div>
+          <button [disabled]="loginForm.invalid" type="submit" class=" mt-3 btn btn-primary w-100">INGRESAR</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<h1 class="m-5">Iniciar Sesión</h1>
+  <form [formGroup]="form" class="m-5" (ngSubmit)="onSend($event)">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email</label>
       <input type="email" formControlName="email" 
@@ -31,4 +75,4 @@
     </div>
     </div>
     <button type="submit" class="btn btn-primary">Ingresar</button>
-  </form>
+  </form>-->

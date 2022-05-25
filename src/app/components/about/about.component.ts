@@ -11,10 +11,17 @@ export class AboutComponent implements OnInit {
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.getData().subscribe(data =>{
+    this.readAbout();
+  }
+  public readAbout() : void{
+    this.datosPortfolio.getUser().subscribe(data =>{
       console.log(data);
       this.myPortfolio=data;
+    },
+    err =>{
+      console.log(err);
+      console.log("Fallo el about");
     });
-  }
+  }  
 
 }

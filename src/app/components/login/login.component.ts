@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +9,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  title = 'bootstrap-popup';
+  loginForm!: FormGroup;
+
   form:FormGroup;
-  constructor(private formBuilder:FormBuilder ) {
+  constructor(private formBuilder:FormBuilder, private authService: AuthenticationService, private route:Router ) {
     this.form=this.formBuilder.group(
       {
         email:['', [Validators.required,Validators.email]],
@@ -24,6 +30,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
+    });
   }
 
   get Email(){
@@ -34,4 +44,22 @@ export class LoginComponent implements OnInit {
     return this.form.get('password');
   }
 
+  onSend(event:Event){
+    event.preventDefault;
+    this.authService.Login(this.form.value).subscribe(data=>{
+      console.log("Data: "+ JSON.stringify(data));
+      this.route.navigate(['/portfolio']);
+    })
+  }
+
+  get emailField(): any {
+    return this.loginForm.get('email');
+  }
+  get passwordField(): any {
+    return this.loginForm.get('password');
+  }
+  loginFormSubmit(): void {
+    console.log(this.loginForm.value);
+    // Call Api
+  }
 }
