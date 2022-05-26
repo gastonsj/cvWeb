@@ -18,7 +18,7 @@ export class PortfolioService {
     return this.http.get('./assets/data/data.json');
   }
   public getUser():Observable<User>{
-    return this.http.get<User>(`${this.apiServerUrl}/usuario/1`);
+    return this.http.get<User>(`${this.apiServerUrl}/usuario/id/1`);
   }
 
   public updateUser(user:User):Observable<User>{

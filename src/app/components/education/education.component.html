@@ -1,6 +1,13 @@
 <section class="resume-section" id="education">
     <div class="resume-section-content">
         <h2 class="mb-5">Education</h2>
+        <div class="text-center">
+            <button  type="button" class="btn btn-success" (click)="onOpenModal('add')">
+                <a class="nav-link" style="color:white">
+                    Añadir educación <span class="sr-only">(current)</span>
+                </a>
+            </button>
+        </div>
         <div class="row" *ngFor="let edu of education">
             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                 <div class="flex-grow-1">
@@ -10,13 +17,15 @@
                    <div> <a href="{{edu.url_photo}}"></a> </div>
                    <div>
                         <a
+                            (click)="onOpenModal('edit',edu)"
                             class="btn btn-primary tooltips"
                             data-placement="top"
                             data-toggle="tooltip"
                             data-original-title="Edit">
-                            <i class="fa fa-pensil"></i>
+                            <i class="fa fa-edit"></i>
                         </a>
                         <a
+                            (click)="onOpenModal('delete',edu)"
                             class="btn btn-secondary tooltips"
                             data-placement="top"
                             data-toggle="tooltip"
@@ -29,4 +38,105 @@
            </div>
         </div>
     </div>
+    <!--Modal Add Education-->
+
+<div class="modal fade" id="addEducationModal" tabindex="-1" aria-labelledby="addEducationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addEducationModalLabel">New message</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="title">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="title"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--<div    
+        class="modal fade" id="addEducationModal" tabindex="-1" role="dialog" 
+        aria-labelledby="addEducationModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addEducationModalLabel">Añadir educación</h5>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="close"
+                            ><span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form #addForm="ngForm" (ngSubmit)="onAddEducation(addForm)">
+                            <div class="form-group">
+                                <label for="title">Titulo</label>
+                                <input type="text"
+                                        ng Model
+                                        name="title"
+                                        class="form-control"
+                                        id="title"
+                                        placeholder="Titulo"
+                                        required
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="start">Inicio</label>
+                                <input type="text"
+                                        ng Model
+                                        name="start"
+                                        class="form-control"
+                                        id="start"
+                                        placeholder="Inicio"
+                                        required
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="end">Fin</label>
+                                <input type="text"
+                                        ng Model
+                                        name="end"
+                                        class="form-control"
+                                        id="end"
+                                        placeholder="Fin"
+                                        required
+                                        >
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                        type="button"
+                                        id="add-education-form"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal"
+                                        >
+                                        Cerrar
+                                </button>
+                                <button
+                                        [disabled]="addForm.invalid"
+                                        type="submit"
+                                        class="btn btn-primary"
+                                        >
+                                        Añadir cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+    -->
 </section>
