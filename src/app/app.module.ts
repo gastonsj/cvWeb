@@ -12,7 +12,7 @@ import { AwardsComponent } from './components/awards/awards.component';
 import { NavigatorComponent } from './components/navigator/navigator.component';
 import { LoginComponent } from './components/login/login.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 
@@ -28,7 +28,7 @@ import { HeaderComponent } from './components/header/header.component';
     NavigatorComponent,
     LoginComponent,
     PortfolioComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

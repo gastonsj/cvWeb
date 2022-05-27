@@ -36,20 +36,24 @@ export class EducationComponent implements OnInit {
       const container=document.getElementById('main-container');
       const button=document.createElement('button');
       button.style.display='none';
-      button.setAttribute('data-toggle','modal');
+      button.setAttribute('data-bs-toggle','modal');
       if(mode==='add'){
-        button.setAttribute('data-target','#addEducationModal');
+        button.setAttribute('data-bs-target','#addEducationModal');
+        console.log("addEducationModal");
       }else if(mode ==='delete'){
         this.deleteEducation=education;
-        button.setAttribute('data-target','#deleteEducationModal');
+        button.setAttribute('data-bs-target','#deleteEducationModal');
+        console.log("deleteEducationModal");
       }else if(mode==='edit'){
         this.editEducation=education;
-        button.setAttribute('data-target','#editEducationModal');
+        button.setAttribute('data-bs-target','#editEducationModal');
+        console.log("editEducationModal");
       }
       container?.appendChild(button);
       button.click(); 
   }
   public onAddEducation(addForm:NgForm){
+    console.log("Entra a onAddEducation");
     document.getElementById('add-education-form')?.click();
     this.educationService.addEducation(addForm.value).subscribe({
       next: (response:Education) =>{
@@ -88,4 +92,5 @@ export class EducationComponent implements OnInit {
       }
     })
   }
+
 }
