@@ -13,13 +13,17 @@
         </div>
         <ul class="list-inline dev-icons">
             <li class="list-inline-item" *ngFor="let sk of skill">
-                <i class="fab fa-html5"></i>
-                <h3 class="mb-0">{{sk.skillName}}</h3>
+                <h3 class="mb-0 text-center">{{sk.skillName}}</h3>
+                <!--
+                <img 
+                src="https://cdn2.dineroenimagen.com/media/dinero/images/blogs/javalogo.jpg"
+                style="max-width:20%"
+                [alt]="sk.skillName">
+                -->
                 <div class="progress">
                     <div class="progress-bar"
                          role="progressbar"
-                         style="width:25%"
-                         aria-valuenow=25 
+                         [style.width.px]="sk.value"
                          aria-valuemin="0" 
                          aria-valuemax="100">
                     </div>
@@ -151,7 +155,7 @@
                             ></button>
                     </div>
                     <div class="modal-body">
-                        <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm)">
+                        <form #editForm="ngForm">
                             <div class="form-group">
                                 <label for="skillName">Nombre de skill:</label>
                                 <input type="text"
@@ -195,6 +199,7 @@
                                 <button
                                         type="submit"
                                         class="btn btn-primary"
+                                        data-bs-dismiss="modal"
                                         >
                                         Añadir cambios
                                 </button>
