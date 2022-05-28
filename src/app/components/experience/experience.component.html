@@ -182,6 +182,15 @@
                     <div class="modal-body">
                         <form #editForm="ngForm">
                             <div class="form-group">
+                                <input type="hidden"
+                                        ngModel="{{editExperience?.id}}"
+                                        name="id"
+                                        class="form-control"
+                                        id="id"
+                                        placeholder="Nombre"
+                                        >
+                            </div>
+                            <div class="form-group">
                                 <label for="companyName">Nombre de la compañia:</label>
                                 <input type="text"
                                         ngModel="{{editExperience?.companyName}}"
@@ -245,15 +254,17 @@
                             <div class="modal-footer">
                                 <button
                                         type="button"
-                                        id="add-education-form"
+                                        id=""
                                         class="btn btn-secondary"
                                         data-bs-dismiss="modal"
                                         >
                                         Cerrar
                                 </button>
                                 <button
+                                        (click)="onUpdateExperience(editForm.value)"
                                         type="submit"
                                         class="btn btn-primary"
+                                        data-bs-dismiss="modal"
                                         >
                                         Añadir cambios
                                 </button>

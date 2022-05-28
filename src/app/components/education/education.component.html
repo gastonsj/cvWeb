@@ -182,6 +182,15 @@
                     <div class="modal-body">
                         <form #editForm="ngForm">
                             <div class="form-group">
+                                <input type="hidden"
+                                        ngModel="{{editEducation?.id}}"
+                                        name="id"
+                                        class="form-control"
+                                        id="id"
+                                        placeholder="Nombre"
+                                        >
+                            </div>
+                            <div class="form-group">
                                 <label for="schoolName">Nombre de institución:</label>
                                 <input type="text"
                                         ngModel="{{editEducation?.schoolName}}"
@@ -245,15 +254,17 @@
                             <div class="modal-footer">
                                 <button
                                         type="button"
-                                        id="add-education-form"
+                                        id=""
                                         class="btn btn-secondary"
                                         data-bs-dismiss="modal"
                                         >
                                         Cerrar
                                 </button>
                                 <button
+                                        (click)="onUpdateEducation(editForm.value)"
                                         type="submit"
                                         class="btn btn-primary"
+                                        data-bs-dismiss="modal"
                                         >
                                         Añadir cambios
                                 </button>

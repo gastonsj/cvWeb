@@ -66,11 +66,11 @@ public onAddExperience(addForm:NgForm){
 }
 public onUpdateExperience(experience:Experience){
   this.editExperience=experience;
-  document.getElementById('add-experience-form')?.click();
+  console.log(experience);
   this.experienceService.updateExperience(experience).subscribe({
     next: (response:Experience) =>{
-      console.log(response);
       this.getExperience();
+      console.log(response);
     },
     error:(error:HttpErrorResponse)=>{
       alert(error.message);

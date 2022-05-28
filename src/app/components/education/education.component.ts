@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Education } from 'src/app/models/education';
 import { EducationService } from 'src/app/services/education.service';
+import { NavigatorComponent } from '../navigator/navigator.component';
 
 @Component({
   selector: 'app-education',
@@ -70,7 +71,6 @@ export class EducationComponent implements OnInit {
   }
   public onUpdateEducation(education:Education){
     this.editEducation=education;
-    document.getElementById('add-education-form')?.click();
     this.educationService.updateEducation(education).subscribe({
       next: (response:Education) =>{
         console.log(response);

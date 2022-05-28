@@ -157,6 +157,15 @@
                     <div class="modal-body">
                         <form #editForm="ngForm">
                             <div class="form-group">
+                                <input type="hidden"
+                                        ngModel="{{editSkill?.id}}"
+                                        name="id"
+                                        class="form-control"
+                                        id="id"
+                                        placeholder="Nombre"
+                                        >
+                            </div>
+                            <div class="form-group">
                                 <label for="skillName">Nombre de skill:</label>
                                 <input type="text"
                                         ngModel="{{editSkill?.skillName}}"
@@ -197,6 +206,7 @@
                                         Cerrar
                                 </button>
                                 <button
+                                        (click)="onUpdateSkill(editForm.value)"
                                         type="submit"
                                         class="btn btn-primary"
                                         data-bs-dismiss="modal"

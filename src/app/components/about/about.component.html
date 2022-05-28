@@ -1,22 +1,170 @@
 <section class="resume-section" id="about">
-    <div class="resume-section-content">
+    <div class="resume-section-content" id="main-about-container">
         <h1 class="mb-0">
-            {{myPortfolio.firstName}}
-            <span class="text-primary">{{myPortfolio.lastName}}</span>
+            {{user.firstName}}
+            <span class="text-primary">{{user.lastName}}</span>
         </h1>
-        <div class="subheading mb-3">
-            {{myPortfolio.position}}
-        </div>
         <div class="subheading mb-5">
-            {{myPortfolio.address}}<br>
-            <a href="mailto:name@email.com">{{myPortfolio.email}}</a>
+            {{user.address}}<br>
+            <a href="mailto:name@email.com">{{user.email}}</a>
         </div>
-        <p class="lead mb-5">{{myPortfolio.about}}</p>
+        <p class="lead mb-5">{{user.about}}</p>
         <div class="social-icons">
             <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
             <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
             <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
             <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
         </div>
+        <div class="pt-3">
+            <a
+                type="button"  
+                class="btn btn-primary tooltips"
+                data-placement="top"
+                data-original-title="Edit"
+                data-bs-toggle="modal" 
+                data-bs-whatever="@fat"
+                (click)="onOpenModal(user)">
+                <i class="fa fa-edit"></i>
+            </a>
+       </div>
+    </div>
+    <!--Modal Edit Education-->
+    <div    
+        class="modal fade" 
+        id="editUserModal" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-labelledby="editUserModalLabel" 
+        aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 
+                            class="modal-title" 
+                            id="editUserModalLabel">
+                            Editar usuario - {{editUser?.firstName}} {{editUser?.lastName}} -[{{editUser?.id}}]
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="close"
+                            ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form #editForm="ngForm">
+                            <div class="form-group">
+                                <input type="hidden"
+                                        ngModel="{{editUser?.id}}"
+                                        name="id"
+                                        class="form-control"
+                                        id="id"
+                                        placeholder="Nombre"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">Nombre:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.firstName}}"
+                                        name="firstName"
+                                        class="form-control"
+                                        id="firstName"
+                                        placeholder="Nombre"
+                                        required
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Apellido:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.lastName}}"
+                                        name="lastName"
+                                        class="form-control"
+                                        id="lastName"
+                                        placeholder="Apellido"
+                                        required
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.email}}"
+                                        name="email"
+                                        class="form-control"
+                                        id="email"
+                                        placeholder="Email"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="birthday">Fecha de nacimiento:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.birthday}}"
+                                        name="birthday"
+                                        class="form-control"
+                                        id="birthday"
+                                        placeholder="dd/mm/aa"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Dirección:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.address}}"
+                                        name="address"
+                                        class="form-control"
+                                        id="address"
+                                        placeholder="Dirección"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Teléfono:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.phone}}"
+                                        name="phone"
+                                        class="form-control"
+                                        id="phone"
+                                        placeholder="Telefono"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="about">Acerca de mi:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.about}}"
+                                        name="about"
+                                        class="form-control"
+                                        id="about"
+                                        placeholder="..."
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="url_photo">URL de imagen:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.url_photo}}"
+                                        name="url_photo"
+                                        class="form-control"
+                                        id="url_photo"
+                                        placeholder="URL de imagen"
+                                        >
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                        type="button"
+                                        id="add-education-form"
+                                        class="btn btn-secondary"
+                                        data-bs-dismiss="modal"
+                                        >
+                                        Cerrar
+                                </button>
+                                <button
+                                        (click)="onUpdateUser(editForm.value)"
+                                        type="submit"
+                                        class="btn btn-primary"
+                                        data-bs-dismiss="modal"
+                                        >
+                                        Añadir cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
     </div>
 </section>

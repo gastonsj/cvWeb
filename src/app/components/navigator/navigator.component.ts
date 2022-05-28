@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/services/portfolio.service';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -8,18 +10,33 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: ['./navigator.component.css']
 })
 export class NavigatorComponent implements OnInit {
-  myPortfolio:any;
-  constructor(private datosPortfolio:PortfolioService) { }
-
-
+  //user:any;
+  public user:User={
+    id: 0,
+  firstName: "",
+  lastName: "",
+  email: "",
+  birthday: "",
+  address: "",
+  phone: "",
+  about: "",
+  url_photo: "",
+}
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.getData().subscribe(data =>{
-      console.log(data);
-      this.myPortfolio=data;
-    });
+    this.getUser();
     
   }
-
+  public getUser():void{
+    this.userService.getUser().subscribe({
+      next:(response:User)=>{
+        this.user=response;
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    })
+  }
 
 }

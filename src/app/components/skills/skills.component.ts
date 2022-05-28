@@ -17,18 +17,19 @@ export class SkillsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSkill();
+
   }
 
   public getSkill():void{
     this.skillService.getSkill().subscribe({
-      next:(Response:Skill[])=>{
-        this.skill=Response;
+      next:(response:Skill[])=>{
+        this.skill=response;
       },
       error:(error:HttpErrorResponse)=>{
         alert(error.message);
       }
     })
-    console.log(this.skill);
+    console.log(this.skill[1]);
   }
 
   public onOpenModal(mode:String, skill?:Skill):void{
@@ -66,6 +67,7 @@ public onAddSkill(addForm:NgForm){
 public onUpdateSkill(skill:Skill){
   this.editSkill=skill;
   document.getElementById('add-skill-form')?.click();
+  console.log(this.editSkill);
   this.skillService.updateSkill(skill).subscribe({
     next: (response:Skill) =>{
       console.log(response);
