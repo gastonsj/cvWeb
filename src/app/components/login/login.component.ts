@@ -10,56 +10,43 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  title = 'bootstrap-popup';
-  loginForm!: FormGroup;
-
   form:FormGroup;
-  constructor(private formBuilder:FormBuilder, private authService: AuthenticationService, private route:Router ) {
+  constructor(  
+              private formBuilder:FormBuilder,
+              private authService: AuthenticationService, 
+              private route:Router) {
     this.form=this.formBuilder.group(
       {
-        email:['', [Validators.required,Validators.email]],
-        password:['',[Validators.required, Validators.minLength(8)]],
-        deviceInfo: this.formBuilder.group({
-          deviceId: ["112314141"],
-          deviceType: ["DEVICE_TYPE_ANDROID"],
-          notificatioToken:["132312415124123"]
-        })
+        username:['',[Validators.required,Validators.minLength(3)]],
+        password:['',[Validators.required,Validators.minLength(3)]]
       }
     )
 
    }
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
-    });
   }
 
-  get Email(){
-    return this.form.get('email');
+  get usernameField():any{
+    return this.form.get('username');
   }
 
-  get Password(){
+  get passwordField():any{
     return this.form.get('password');
   }
 
   onSend(event:Event){
     event.preventDefault;
+    console.log(JSON.stringify(this.form.value));
     this.authService.Login(this.form.value).subscribe(data=>{
       console.log("Data: "+ JSON.stringify(data));
       this.route.navigate(['/portfolio']);
     })
   }
-
-  get emailField(): any {
-    return this.loginForm.get('email');
-  }
-  get passwordField(): any {
-    return this.loginForm.get('password');
-  }
-  loginFormSubmit(): void {
-    console.log(this.loginForm.value);
-    // Call Api
+  get isLoggedIn() { return this.authService.isLoggedIn(); }
+  
+  logout(){
+    console.log("logout");
+    this.authService.logout();
   }
 }

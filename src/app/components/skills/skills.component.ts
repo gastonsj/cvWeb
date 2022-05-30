@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Skill } from 'src/app/models/skills';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SkillService } from 'src/app/services/skill.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class SkillsComponent implements OnInit {
   public skill:Skill[]=[];
   public editSkill:Skill | undefined;
   public deleteSkill:Skill | undefined;
-  constructor(private skillService:SkillService) { }
+  constructor(private skillService:SkillService,
+              private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getSkill();
@@ -89,4 +91,5 @@ public onDeleteSkill(idSkill:number):void{
     }
   })
 }
+get isLoggedIn() { return this.authService.isLoggedIn(); }
 }

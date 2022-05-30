@@ -8,4 +8,7 @@ export interface User{
     phone: string;
     about: string;
     url_photo: string;
+    url_linkedin: string;
+    url_github: string;
+    url_facebook: string;
 }

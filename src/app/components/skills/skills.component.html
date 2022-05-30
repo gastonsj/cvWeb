@@ -3,12 +3,13 @@
         <h2 class="mb-5">Skills</h2>
         <div class="text-center">
             <button 
+                *ngIf="isLoggedIn"
                 type="button" 
                 class="btn btn-success" 
                 data-bs-toggle="modal" 
                 data-bs-whatever="@fat"
                 (click)="onOpenModal('add')">
-                Añadir experiencia
+                Añadir skill
             </button>
         </div>
         <ul class="list-inline dev-icons">
@@ -30,6 +31,7 @@
                 </div>
                 <div>
                     <a
+                        *ngIf="isLoggedIn"
                         (click)="onOpenModal('edit',sk)"
                         class="btn btn-primary tooltips"
                         data-placement="top"
@@ -38,6 +40,7 @@
                         <i class="fa fa-edit"></i>
                     </a>
                     <a
+                        *ngIf="isLoggedIn"
                         (click)="onOpenModal('delete',sk)"
                         class="btn btn-secondary tooltips"
                         data-placement="top"

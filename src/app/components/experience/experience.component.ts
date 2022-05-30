@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Experience } from 'src/app/models/experiences';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 
@@ -14,7 +15,8 @@ export class ExperienceComponent implements OnInit {
   public experience:Experience[]=[];
   public editExperience:Experience | undefined;
   public deleteExperience:Experience | undefined;
-  constructor(private experienceService:ExperienceService) { }
+  constructor(private experienceService:ExperienceService,
+              private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getExperience();
@@ -88,5 +90,5 @@ public onDeleteExperience(idExp:number):void{
     }
   })
 }
-
+get isLoggedIn() { return this.authService.isLoggedIn(); }
 }

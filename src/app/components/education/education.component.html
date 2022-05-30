@@ -3,6 +3,7 @@
         <h2 class="mb-5">Education</h2>
         <div class="text-center">
             <button 
+                *ngIf="isLoggedIn"
                 type="button" 
                 class="btn btn-success" 
                 data-bs-toggle="modal" 
@@ -20,6 +21,7 @@
                    <div> <a href="{{edu.url_photo}}"></a> </div>
                    <div>
                         <a
+                            *ngIf="isLoggedIn"
                             (click)="onOpenModal('edit',edu)"
                             class="btn btn-primary tooltips"
                             data-placement="top"
@@ -28,6 +30,7 @@
                             <i class="fa fa-edit"></i>
                         </a>
                         <a
+                            *ngIf="isLoggedIn"
                             (click)="onOpenModal('delete',edu)"
                             class="btn btn-secondary tooltips"
                             data-placement="top"

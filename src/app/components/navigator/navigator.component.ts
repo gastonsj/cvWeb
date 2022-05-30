@@ -21,6 +21,9 @@ export class NavigatorComponent implements OnInit {
   phone: "",
   about: "",
   url_photo: "",
+  url_linkedin:"",
+  url_github:"",
+  url_facebook:""
 }
   constructor(private userService:UserService) { }
 

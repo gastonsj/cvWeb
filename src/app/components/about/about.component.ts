@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,8 +10,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  //user:any;
-  //public user:User[]=[];
   public user:User={
       id: 0,
     firstName: "",
@@ -21,10 +20,14 @@ export class AboutComponent implements OnInit {
     phone: "",
     about: "",
     url_photo: "",
+    url_linkedin:"",
+    url_github:"",
+    url_facebook:""
   }
   public editUser:User | undefined;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,
+              private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -61,5 +64,6 @@ public onUpdateUser(user:User){
     }
   })
 }
+get isLoggedIn() { return this.authService.isLoggedIn(); }
 
 }

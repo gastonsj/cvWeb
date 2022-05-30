@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -8,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor() { }
+  constructor(auth:AuthenticationService) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
+  }
+  logout(){
+
+  }
+  isLogin(){
   }
 
 }

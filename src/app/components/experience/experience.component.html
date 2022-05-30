@@ -3,6 +3,7 @@
         <h2 class="mb-5">Experience</h2>
         <div class="text-center">
             <button 
+                *ngIf="isLoggedIn"
                 type="button" 
                 class="btn btn-success" 
                 data-bs-toggle="modal" 
@@ -22,6 +23,7 @@
                 </div>
                 <div>
                     <a
+                        *ngIf="isLoggedIn"
                         (click)="onOpenModal('edit',expe)"
                         class="btn btn-primary tooltips"
                         data-placement="top"
@@ -30,6 +32,7 @@
                         <i class="fa fa-edit"></i>
                     </a>
                     <a
+                        *ngIf="isLoggedIn"
                         (click)="onOpenModal('delete', expe)"
                         class="btn btn-secondary tooltips"
                         data-placement="top"
@@ -323,7 +326,7 @@
 <!--ALERT MESSAGE - EDUCATIONS NOT FOUND-->
     <div *ngIf="experience?.length == 0" class="col-lg-3 col-md-11 col-x1-2 text-center">
         <div class="alert alert-info" role="alert">
-            <h4 class="alert-heading">NO HAY EDUCACIONES</h4>
+            <h4 class="alert-heading">NO HAY EXPERIENCIAS</h4>
         </div>
     </div>
 </section>

@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Education } from 'src/app/models/education';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { EducationService } from 'src/app/services/education.service';
-import { NavigatorComponent } from '../navigator/navigator.component';
 
 @Component({
   selector: 'app-education',
@@ -14,7 +14,8 @@ export class EducationComponent implements OnInit {
   public education:Education[]=[];
   public editEducation:Education | undefined;
   public deleteEducation:Education | undefined;
-  constructor(private educationService:EducationService) { }
+  constructor(private educationService:EducationService,
+              private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getEducation();
@@ -92,5 +93,5 @@ export class EducationComponent implements OnInit {
       }
     })
   }
-
+  get isLoggedIn() { return this.authService.isLoggedIn(); }
 }

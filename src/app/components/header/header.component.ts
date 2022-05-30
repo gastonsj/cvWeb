@@ -9,8 +9,20 @@ import { HeaderService } from 'src/app/services/header.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  public user: User | undefined;
+  public user:User={
+    id: 0,
+  firstName: "",
+  lastName: "",
+  email: "",
+  birthday: "",
+  address: "",
+  phone: "",
+  about: "",
+  url_photo: "",
+  url_linkedin:"",
+  url_github:"",
+  url_facebook:""
+  }
   public editUser: User | undefined;
 
   constructor(private headerService: HeaderService) { }

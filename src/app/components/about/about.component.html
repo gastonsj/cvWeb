@@ -9,13 +9,7 @@
             <a href="mailto:name@email.com">{{user.email}}</a>
         </div>
         <p class="lead mb-5">{{user.about}}</p>
-        <div class="social-icons">
-            <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div class="pt-3">
+        <div class="pt-3" *ngIf="isLoggedIn">
             <a
                 type="button"  
                 class="btn btn-primary tooltips"
@@ -142,6 +136,36 @@
                                         class="form-control"
                                         id="url_photo"
                                         placeholder="URL de imagen"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="url_linkedin">URL de Linkedin:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.url_linkedin}}"
+                                        name="url_linkedin"
+                                        class="form-control"
+                                        id="url_linkedin"
+                                        placeholder="URL de Linkedin"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="url_github">URL de Github:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.url_github}}"
+                                        name="url_github"
+                                        class="form-control"
+                                        id="url_github"
+                                        placeholder="URL de Github"
+                                        >
+                            </div>
+                            <div class="form-group">
+                                <label for="url_facebook">URL de Facebook:</label>
+                                <input type="text"
+                                        ngModel="{{editUser?.url_facebook}}"
+                                        name="url_facebook"
+                                        class="form-control"
+                                        id="url_facebook"
+                                        placeholder="URL de Facebook"
                                         >
                             </div>
                             <div class="modal-footer">

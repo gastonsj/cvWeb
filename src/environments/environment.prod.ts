@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseUrl: "https://portfoliowebgl.herokuapp.com",
+  apiBaseUrlAuth: "https://portfoliowebgl.herokuapp.com/auth"
 };

@@ -12,9 +12,12 @@ import { AwardsComponent } from './components/awards/awards.component';
 import { NavigatorComponent } from './components/navigator/navigator.component';
 import { LoginComponent } from './components/login/login.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { ProjectComponent } from './components/project/project.component';
+import { PortfolioService } from './services/portfolio.service';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { HeaderComponent } from './components/header/header.component';
     LoginComponent,
     PortfolioComponent,
     HeaderComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { HeaderComponent } from './components/header/header.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PortfolioService,
+  {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
