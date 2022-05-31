@@ -1,6 +1,6 @@
 <section class="resume-section" id="experience">
     <div class="resume-section-content" id="main-experience-container">
-        <h2 class="mb-5">Experience</h2>
+        <h2 class="mb-5">Experiencia</h2>
         <div class="text-center">
             <button 
                 *ngIf="isLoggedIn"
@@ -14,15 +14,16 @@
         </div>
         <ul>
             <li style="list-style:none" *ngFor="let expe of experience">
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">{{expe.position}}</h3>
-                        <div class="subheading mb-3">{{expe.companyName}}</div>
+                <div class="card">
+                    <h5 class="card-header">{{expe.position}}</h5>
+                    <div class="card-body">
+                        <img src="{{expe.url_photo}}" class="card-img-top mx-auto d-block" style="max-width: 200px;" alt="...">
+                      <h5 class="card-title">{{expe.companyName}}</h5>
+                      <p class="card-text">{{expe.description}}</p>
+                      <div class="flex-shrink-0 text-center"><span class="text-primary">{{expe.start}} - {{expe.end}}</span></div> 
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">{{expe.start}} - {{expe.end}}</span></div> 
-                </div>
-                <div>
-                    <a
+                    <div>
+                        <a
                         *ngIf="isLoggedIn"
                         (click)="onOpenModal('edit',expe)"
                         class="btn btn-primary tooltips"
@@ -40,7 +41,8 @@
                         data-original-title="Delete">
                         <i class="fa fa-times"></i>
                     </a>
-               </div>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>

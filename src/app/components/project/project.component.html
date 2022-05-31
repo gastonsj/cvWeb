@@ -1,6 +1,6 @@
 <section class="resume-section" id="project">
     <div class="resume-section-content" id="main-project-container">
-            <h2 class="mb-5">Projectos</h2>
+            <h2 class="mb-5">Proyectos</h2>
                 <div class="text-center">
                 <button 
                         *ngIf="isLoggedIn"
@@ -12,12 +12,11 @@
                         Añadir projecto
                 </button>
     </div>
-    <div class="row" *ngFor="let proj of project">
-        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="flex-grow-1">
-                <h3 class="mb-0">{{proj.projectName}}</h3>
-                <div>{{proj.description}}</div>
-                <div> <a [href]="proj.url_photo"></a> </div>
+        <div class="card" *ngFor="let proj of project">
+            <h5 class="card-header">{{proj.projectName}}</h5>
+            <div class="card-body">
+                <img src="{{proj.url_photo}}" class="card-img-top mx-auto d-block" style="max-width: 200px;" alt="...">
+                <p class="card-text">{{proj.description}}</p>
                 <div>
                     <a
                         *ngIf="isLoggedIn"
@@ -39,11 +38,10 @@
                     </a>
                 </div>
             </div>
-        <div class="flex-shrink-0">
-            <span class="text-primary">{{proj.projectDate}}</span>
-        </div>
+            <div class="flex-shrink-0 text-center">
+                <span class="text-primary">{{proj.projectDate}}</span>
+            </div>        
     </div>
-</div>
 </div>
     <!--Modal Add Education-->
     <div 

@@ -1,26 +1,33 @@
 <section class="resume-section" id="about">
     <div class="resume-section-content" id="main-about-container">
-        <h1 class="mb-0">
-            {{user.firstName}}
-            <span class="text-primary">{{user.lastName}}</span>
-        </h1>
-        <div class="subheading mb-5">
-            {{user.address}}<br>
-            <a href="mailto:name@email.com">{{user.email}}</a>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{user.url_photo}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title">{{user.firstName}}
+                    <span class="text-primary">{{user.lastName}}</span></h1>
+                  <p class="card-text">{{user.address}}</p>
+                  <p class="card-text">{{user.about}}</p>
+                  <p class="card-text"><small class="text-muted">{{user.email}}</small></p>
+                </div>
+                <div class="pt-3" *ngIf="isLoggedIn">
+                    <a
+                        type="button"  
+                        class="btn btn-primary tooltips"
+                        data-placement="top"
+                        data-original-title="Edit"
+                        data-bs-toggle="modal" 
+                        data-bs-whatever="@fat"
+                        (click)="onOpenModal(user)">
+                        <i class="fa fa-edit"></i>
+                    </a>
+               </div>
+              </div>
+            </div>
         </div>
-        <p class="lead mb-5">{{user.about}}</p>
-        <div class="pt-3" *ngIf="isLoggedIn">
-            <a
-                type="button"  
-                class="btn btn-primary tooltips"
-                data-placement="top"
-                data-original-title="Edit"
-                data-bs-toggle="modal" 
-                data-bs-whatever="@fat"
-                (click)="onOpenModal(user)">
-                <i class="fa fa-edit"></i>
-            </a>
-       </div>
     </div>
     <!--Modal Edit Education-->
     <div    

@@ -1,6 +1,6 @@
 <section class="resume-section" id="education">
     <div class="resume-section-content" id="main-container">
-        <h2 class="mb-5">Education</h2>
+        <h2 class="mb-5">Educación</h2>
         <div class="text-center">
             <button 
                 *ngIf="isLoggedIn"
@@ -12,37 +12,35 @@
                 Añadir educacion
             </button>
         </div>
-        <div class="row" *ngFor="let edu of education">
-            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div class="flex-grow-1">
-                   <h3 class="mb-0">{{edu.schoolName}}</h3>
-                   <div class="subheading mb-3">{{edu.title}}</div>
-                   <div>{{edu.description}}</div>
-                   <div> <a href="{{edu.url_photo}}"></a> </div>
-                   <div>
-                        <a
-                            *ngIf="isLoggedIn"
-                            (click)="onOpenModal('edit',edu)"
-                            class="btn btn-primary tooltips"
-                            data-placement="top"
-                            data-toggle="tooltip"
-                            data-original-title="Edit">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a
-                            *ngIf="isLoggedIn"
-                            (click)="onOpenModal('delete',edu)"
-                            class="btn btn-secondary tooltips"
-                            data-placement="top"
-                            data-toggle="tooltip"
-                            data-original-title="Delete">
-                            <i class="fa fa-times"></i>
-                        </a>
-                   </div>
+                    <div class="card" *ngFor="let edu of education">
+                        <h5 class="card-header">{{edu.title}}</h5>
+                        <div class="card-body">
+                            <img src="{{edu.url_photo}}" class="card-img-top mx-auto d-block" style="max-width: 200px;" alt="...">
+                          <h5 class="card-title">{{edu.schoolName}}</h5>
+                          <p class="card-text">{{edu.description}}</p>
+                          <div class="flex-shrink-0 text-center"><span class="text-primary">{{edu.start}} - {{edu.end}}</span></div>
+                        </div>
+                        <div>
+                            <a
+                                *ngIf="isLoggedIn"
+                                (click)="onOpenModal('edit',edu)"
+                                class="btn btn-primary tooltips"
+                                data-placement="top"
+                                data-toggle="tooltip"
+                                data-original-title="Edit">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a
+                                *ngIf="isLoggedIn"
+                                (click)="onOpenModal('delete',edu)"
+                                class="btn btn-secondary tooltips"
+                                data-placement="top"
+                                data-toggle="tooltip"
+                                data-original-title="Delete">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
                </div>
-               <div class="flex-shrink-0"><span class="text-primary">{{edu.start}} - {{edu.end}}</span></div>
-           </div>
-        </div>
     </div>
     <!--Modal Add Education-->
     <div    

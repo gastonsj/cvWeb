@@ -12,45 +12,49 @@
                 Añadir skill
             </button>
         </div>
-        <ul class="list-inline dev-icons">
-            <li class="list-inline-item" *ngFor="let sk of skill">
-                <h3 class="mb-0 text-center">{{sk.skillName}}</h3>
-                <!--
+        <div class="card-group" *ngFor="let sk of skill">
+            <div class="col">
+              <div class="card h-20">
                 <img 
-                src="https://cdn2.dineroenimagen.com/media/dinero/images/blogs/javalogo.jpg"
-                style="max-width:20%"
-                [alt]="sk.skillName">
-                -->
-                <div class="progress">
-                    <div class="progress-bar"
-                         role="progressbar"
-                         [style.width.px]="sk.value"
-                         aria-valuemin="0" 
-                         aria-valuemax="100">
+                src="{{sk.url_photo}}"
+                alt="{{sk.skillName}}"
+                style="max-width: 100px;"
+                class="card-img-top mx-auto d-block">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{sk.skillName}}</h5>
+                    <div class="progress">
+                        <div class="progress-bar"
+                            role="progressbar"
+                            [style.width.px]="sk.value"
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                        </div>
                     </div>
+                    <div>
+                        <a
+                            *ngIf="isLoggedIn"
+                            (click)="onOpenModal('edit',sk)"
+                            class="btn btn-primary tooltips"
+                            data-placement="top"
+                            data-toggle="tooltip"
+                            data-original-title="Edit">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a
+                            *ngIf="isLoggedIn"
+                            (click)="onOpenModal('delete',sk)"
+                            class="btn btn-secondary tooltips"
+                            data-placement="top"
+                            data-toggle="tooltip"
+                            data-original-title="Delete">
+                            <i class="fa fa-times"></i>
+                        </a>
+                   </div>
                 </div>
-                <div>
-                    <a
-                        *ngIf="isLoggedIn"
-                        (click)="onOpenModal('edit',sk)"
-                        class="btn btn-primary tooltips"
-                        data-placement="top"
-                        data-toggle="tooltip"
-                        data-original-title="Edit">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <a
-                        *ngIf="isLoggedIn"
-                        (click)="onOpenModal('delete',sk)"
-                        class="btn btn-secondary tooltips"
-                        data-placement="top"
-                        data-toggle="tooltip"
-                        data-original-title="Delete">
-                        <i class="fa fa-times"></i>
-                    </a>
-               </div>
-            </li>
-        </ul>
+              </div>
+            </div>
+            
+        </div>
     </div>
     <!--Modal Add Skill-->
     <div    
